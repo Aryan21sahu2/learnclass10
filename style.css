@@ -93,39 +93,23 @@ footer {
 }
 
 /* Cookie Consent */
-.cookie-consent {
-position: fixed;
-bottom: 0;
-left: 0;
-width: 100%;
-background: #111;
-color: #fff;
-padding: 12px 20px;
-display: flex;
-justify-content: space-between;
-align-items: center;
-z-index: 9999;
-font-size: 14px;
-}
+document.addEventListener("DOMContentLoaded", function () {
+  const box = document.getElementById("cookieConsent");
+  const btn = document.getElementById("acceptCookieBtn");
 
+  if (!box || !btn) {
+    console.log("Cookie elements not found");
+    return;
+  }
 
-.cookie-consent a {
-color: #4da6ff;
-text-decoration: underline;
-}
+  if (localStorage.getItem("cookiesAccepted") === "yes") {
+    box.style.display = "none";
+  }
 
+  btn.onclick = function () {
+    localStorage.setItem("cookiesAccepted", "yes");
+    box.style.display = "none";
+  };
+});
 
-.cookie-consent button {
-background: #4da6ff;
-border: none;
-color: #fff;
-padding: 6px 12px;
-border-radius: 5px;
-cursor: pointer;
-}
-
-
-.cookie-consent button:hover {
-background: #1e90ff;
-}
 
